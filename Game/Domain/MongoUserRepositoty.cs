@@ -1,4 +1,5 @@
 using System;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Game.Domain
@@ -8,8 +9,7 @@ namespace Game.Domain
         private readonly IMongoCollection<UserEntity> userCollection;
         public const string CollectionName = "users";
         private static readonly object lockObject = new();
-
-
+        
         public MongoUserRepository(IMongoDatabase database)
         {
             userCollection = database.GetCollection<UserEntity>(CollectionName);
